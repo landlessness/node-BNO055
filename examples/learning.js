@@ -5,6 +5,12 @@ var bno055;
 bno055 = new BNO055();
 
 async.series({
+  begin: function(callback) { 
+    bno055.beginNDOF(function(err,res) {
+      if (err) return callback(err);
+      console.log('began successfully? ' + res);
+      callback(null, res);
+  })},
   chipIdentifier: function(callback) { 
     bno055.validateChipIdentifier(function(err,res) {
       if (err) return callback(err);
@@ -34,6 +40,18 @@ async.series({
       if (err) return callback(err);
       console.log('operating mode: ' + formatHex(res));
       callback(null,res);
+  })},
+  getEuler: function(callback) { 
+    bno055.getEuler(function(err,res) {
+      if (err) return callback(err);
+      console.log('euler: ' + JSON.stringify(res));
+      callback(null,res);
+  })},
+  reset: function(callback) {
+    bno055.reset(function(err) {
+      if (err) return callback(err);
+      console.log('reset');
+      callback(null, null);
   })}
 }, function(err,res) {
   if (err)
