@@ -1,6 +1,6 @@
 {
   "name": "node-bno055",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Node library for the Bosch Sensortec BNO055, an intelligent 9-axis “Absolute Orientation Sensor”, which includes sensors and sensor fusion in a single package.",
   "main": "index.js",
   "directories": {
