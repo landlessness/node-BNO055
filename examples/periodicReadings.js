@@ -32,6 +32,47 @@ readAll = function() {
       console.log('quaternion: ' + JSON.stringify(res));
       callback(null,res);
   })},
+  getMagnetometer: function(callback) { 
+    bno055.getMagnetometer(function(err,res) {
+      if (err) return callback(err);
+      console.log('magnetometer: ' + JSON.stringify(res));
+      callback(null,res);
+  })},
+  getAccelerometer: function(callback) { 
+    bno055.getAccelerometer(function(err,res) {
+      if (err) return callback(err);
+      console.log('accelerometer: ' + JSON.stringify(res));
+      callback(null,res);
+  })},
+  getLinearAcceleration: function(callback) { 
+    bno055.getLinearAcceleration(function(err,res) {
+      if (err) return callback(err);
+      console.log('linear acceleration: ' + JSON.stringify(res));
+      callback(null,res);
+  })},
+  getGravity: function(callback) { 
+    bno055.getGravity(function(err,res) {
+      if (err) return callback(err);
+      console.log('gravity: ' + JSON.stringify(res));
+      callback(null,res);
+  })},
+  getGyroscope: function(callback) { 
+    bno055.getGyroscope(function(err,res) {
+      if (err) return callback(err);
+      console.log('gyroscope: ' + JSON.stringify(res));
+      callback(null,res);
+  })}
+  }, function(err,res) {
+    if (err)
+      throw (err)
+    console.log("\n\n");
+  });
+}
+
+readStatus = function() {
+
+  async.series({
+
   getCalibrationStatus: function(callback) {
     bno055.getCalibrationStatus(function(err,res) {
       if (err) return callback(err);
@@ -49,7 +90,6 @@ readAll = function() {
       throw (err)
     console.log("\n\n");
   });
-
 }
 
 async.series({
