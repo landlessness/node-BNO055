@@ -59,7 +59,7 @@ async.series({
       callback(err, res);
   })},
   setInterval: function(callback) {
-    var interval = setInterval(readEuler, 100);
+    var interval = setInterval(readAll, 500);
     callback(null, interval);
   }}, 
   function(err,res) {
