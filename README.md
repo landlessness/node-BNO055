@@ -3,6 +3,9 @@
 
 ## Installation
 
+Install i2c following instructions here:
+https://github.com/kelly/node-i2c
+
 ```sh
 $ npm install --save bno-055
 ```
@@ -22,10 +25,10 @@ imu.beginNDOF(function() {
 
     setInterval(function() {
         async.series({
-            temperature: imu.getTemperature
-            quaternion: imu.getQuaternion
-            euler: imu.getEuler
-            linearAcceleration: imu.getLinearAcceleration
+            calibrationStatus: imu.getCalibrationStatus.bind(imu),
+            quaternion: imu.getQuaternion.bind(imu),
+            euler: imu.getEuler.bind(imu),
+            linearAcceleration: imu.getLinearAcceleration.bind(imu)
         },
         function(err, results) {
             console.info( 'imu: ', JSON.stringify(results) );
