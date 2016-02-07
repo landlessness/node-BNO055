@@ -37,6 +37,6 @@ imu.beginNDOF(function() {
 });
 ```
 
+## Datasheet
 
-#TODO: cache calibration
-Usage
+https://www.adafruit.com/datasheets/BST_BNO055_DS000_12.pdf 
