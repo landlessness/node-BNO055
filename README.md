@@ -37,6 +37,33 @@ imu.beginNDOF(function() {
 });
 ```
 
+Change the mounting position of the sensor. See section 3.4 Axis remap in the datasheet for details.
+
+```js
+var imu = new BNO055({
+        orientation: BNO055.orientation(BNO055.AXIS_REMAP_Y, BNO055.AXIS_REMAP_X, BNO055.AXIS_REMAP_Z, 0,1,0)
+    });
+```
+
+Resuse the sensor's calibration data.  See section 3.10 Calibration for details on manual calibration.
+
+```js
+// get calibration values, and save for later
+var calibrationData;
+
+imu.getCalibrationData(function(err, results) {
+    if (!err && results) {
+        calibrationData = results;
+    }
+});
+
+
+//then use that data later when initializing the sensor
+var imu = new BNO055({
+    calibration: calibrationData
+});
+```
+
 ## Datasheet
 
 https://www.adafruit.com/datasheets/BST_BNO055_DS000_12.pdf 
